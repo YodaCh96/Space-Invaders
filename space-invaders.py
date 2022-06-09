@@ -239,7 +239,7 @@ class AlienInvasion:
             self.bg_color = (0,0,0)
             self.ship.mode('dark-ship.bmp')
         else:
-            self.bg_color = (255,255,255)
+            self.bg_color = (230,230,230)
             self.ship.mode('ship.bmp')
         self.screen.fill(self.bg_color)
         self.ship.blitme()

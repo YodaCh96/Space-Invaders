@@ -237,8 +237,10 @@ class AlienInvasion:
         """Update images on the screen, and flip to the new screen."""
         if (self.ldr.value*1000) == 0:
             self.bg_color = (0,0,0)
+            self.ship.mode('dark-ship.bmp')
         else:
             self.bg_color = (255,255,255)
+            self.ship.mode('ship.bmp')
         self.screen.fill(self.bg_color)
         self.ship.blitme()
         for bullet in self.bullets.sprites():

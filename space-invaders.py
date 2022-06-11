@@ -241,6 +241,9 @@ class AlienInvasion:
         else:
             self.screen.fill((230,230,230))
             self.sb.text_color = "black"
+        self.sb.prep_score()
+        self.sb.prep_high_score()
+        self.sb.prep_level()
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()

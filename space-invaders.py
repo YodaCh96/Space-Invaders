@@ -221,7 +221,7 @@ class AlienInvasion:
         alien_width, alien_height = alien.rect.size
         alien.x = alien_width + 2 * alien_width * alien_number
         alien.rect.x = alien.x
-        alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
+        alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number + 50
         self.aliens.add(alien)
     
     def _check_aliens_bottom(self):
@@ -235,12 +235,12 @@ class AlienInvasion:
     
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
-        if (self.ldr.value*1000) == 0:
-            self.screen.fill((0,0,0))
-            self.sb.text_color = "red"
-        else:
+        if self.ldr.light_detected:
             self.screen.fill((230,230,230))
-            self.sb.text_color = "black"
+            self.sb.text_color = (0,0,0)
+        else:
+            self.screen.fill((0,0,0))
+            self.sb.text_color = (255,0,0)
         self.sb.prep_score()
         self.sb.prep_high_score()
         self.sb.prep_level()

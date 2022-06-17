@@ -6,10 +6,11 @@ Die Ausserirdischen versuchen, das Schiff zu zerstören, indem sie auf es schies
 
 ![Space Invaders](images/space-invaders.gif)
 
-## Requeriments
+## Fachspezifische Schwerpunkte
 
-- [Python](https://www.python.org/)
-- [Pygame](https://www.pygame.org/)
+-	Programmierung in Python
+-	Python-Modul pygame
+-	Präsentation des Projektes
 
 ## Let's play
 
@@ -42,5 +43,5 @@ Wenn Sie einen Fehler finden oder einen Vorschlag haben, melden Sie sich. Ich bi
 
 Vielen Dank, dass Sie sich mein Spiel angesehen haben, und ich hoffe, dass es Ihnen gefällt! Fühlen Sie sich frei, mich zu kontaktieren.
 
-Ioannis Christodoulakis
-ioannis.ch@outlook.com
+- Ioannis Christodoulakis
+- ioannis.ch@outlook.com

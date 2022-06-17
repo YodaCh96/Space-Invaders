@@ -1,6 +1,8 @@
 # Space Invaders
 
-Spce Invaders is a popular arcade game.
+Space Invaders ist ein zweidimensionales, Shooter-Spiel, bei dem der Spieler ein Schiff steuert, indem er es horizontal über den unteren Teil des Bildschirms bewegt und auf absteigende Aliens feuert. Ziel ist es, vier Reihen von neun Aliens zu besiegen, die sich horizontal über den Bildschirm hin- und herbewegen, während sie sich zum unteren Rand des Bildschirms bewegen. Der Spieler besiegt ein Alien und erhält dafür Punkte, indem er es mit der Laserkanone abschiesst. Je mehr Aliens besiegt werden, desto schneller werden sowohl die Bewegungen der Aliens.
+
+Die Ausserirdischen versuchen, das Schiff zu zerstören, indem sie auf es schiessen, während sie sich dem unteren Rand des Bildschirms nähern. Wenn sie den Boden erreichen, ist die Invasion der Ausserirdischen erfolgreich und das Spiel endet.
 
 ![Space Invaders](images/space-invaders.gif)
 
@@ -13,7 +15,7 @@ Spce Invaders is a popular arcade game.
 
 ### Cloning the Repository
 
-First create your fork of the repository, then clone using:
+Erstellen Sie zunächst Ihren Fork des Projekts, und klonen Sie dann mit:
 
 ```none
 git clone https://github.com/YodaCh96/Space-Invaders.git
@@ -22,7 +24,7 @@ cd Space-Invaders
 
 ### Running
 
-To run the game, ensure that you have python and pygame library installed in your system. Then run the game, using:
+Um das Spiel zu starten, müssen Sie sicherstellen, dass Sie Python und die Pygame-Bibliothek in Ihrem System installiert haben. Starten Sie dann das Spiel mit:
 
 ```none
 python space-invaders.py
@@ -30,15 +32,15 @@ python space-invaders.py
 
 ## Contributing
 
-Any ideas to add new feature or enhance the current one are appreciated. First fork the repo. Then you can add pull requests or open issues anytime you want.
+Jede Idee, um neue Funktionen hinzuzufügen oder die aktuelle zu verbessern, ist willkommen. Forken Sie zunächst das Repository. Dann können Sie jederzeit Pull Requests hinzufügen oder Issues öffnen.
 
 ## Feedback
 
-If you find any bug or have any suggestion, please do file issues. I am graceful for any feedback and will do my best to improve this package.
+Wenn Sie einen Fehler finden oder einen Vorschlag haben, melden Sie sich. Ich bin für jedes Feedback dankbar und werde mein Bestes tun, um dieses Paket zu verbessern.
 
 ## Contact
 
-Thanks for checking out my game and I hope you enjoy it! Feel free to contact me.
+Vielen Dank, dass Sie sich mein Spiel angesehen haben, und ich hoffe, dass es Ihnen gefällt! Fühlen Sie sich frei, mich zu kontaktieren.
 
 Ioannis Christodoulakis
 ioannis.ch@outlook.com

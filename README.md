@@ -35,3 +35,10 @@ Any ideas to add new feature or enhance the current one are appreciated. First f
 ## Feedback
 
 If you find any bug or have any suggestion, please do file issues. I am graceful for any feedback and will do my best to improve this package.
+
+## Contact
+
+Thanks for checking out my game and I hope you enjoy it! Feel free to contact me.
+
+Ioannis Christodoulakis
+ioannis.ch@outlook.com

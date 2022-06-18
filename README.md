@@ -4,7 +4,7 @@ Space Invaders ist ein zweidimensionales, Shooter-Spiel, bei dem der Spieler ein
 
 Die Ausserirdischen versuchen, das Schiff zu zerstören, indem sie auf es schiessen, während sie sich dem unteren Rand des Bildschirms nähern. Wenn sie den Boden erreichen, ist die Invasion der Ausserirdischen erfolgreich und das Spiel endet.
 
-![Space Invaders](images/space-invaders.gif)
+![Space Invaders](images/space-invaders.png)
 
 ## Fachspezifische Schwerpunkte
 

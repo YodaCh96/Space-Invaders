@@ -1,19 +1,19 @@
 class GameStats:
-    """Track statistics for Alien Invasion."""
+    """Track-Statistiken für Space Invaders."""
 
     def __init__(self, ai_game):
-        """Initalize statistics."""
+        """Statistiken initialisieren."""
         self.settings = ai_game.settings
         self.reset_stats()
 
-        # Start Alien Invasion in an inactive state.
+        # Space Invaders in einem inaktiven Zustand starten
         self.game_active = False
 
-        # High score should never be reset.
+        # Der Highscore sollte nie zurückgesetzt werden
         self.high_score = 0
 
     def reset_stats(self):
-        """Initialize statistics that can change during the game."""
+        """Statistiken initialisieren, die sich während des Spiels ändern können."""
         self.ships_left = self.settings.ship_limit
         self.score = 0
         self.level = 1

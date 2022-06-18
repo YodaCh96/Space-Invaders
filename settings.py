@@ -1,27 +1,27 @@
 class Settings:
-    """A class to store all settings for Alien Invasion."""
+    """Eine Klasse zum Speichern aller Einstellungen für Space Invaders."""
 
     def __init__(self):
-        """Initialize the game's static settings."""
-        # Screen settings
+        """Statischen Einstellungen des Spiels initialisieren."""
+        # Bildschirmeinstellungen
         self.screen_width = 1200
         self.screen_height = 800
 
-        # Ship settings
+        # Schiffseinstellungen
         self.ship_limit = 3
 
-        # Bullet settings
+        # Einstellungen für Bullets
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
         self.bullets_allowed = 3
 
-        # Alien settings
+        # Alien Einstellungen
         self.fleet_drop_speed = 10
         
-        # How quickly the game speeds up
+        # Wie schnell sich das Spiel beschleunigt
         self.speedup_scale = 1.2
-        # How quickly the alien point values increase
+        # Wie schnell die Punktwerte der Ausserirdischen steigen
         self.score_scale = 1.5
 
         self.initialize_dynamic_settings()
@@ -33,14 +33,14 @@ class Settings:
         self.bullet_speed = 0.7 * self.offset
         self.alien_speed = 0.1 * self.offset
 
-        # fleet_direction of 1 represents right; -1 represents left.
+        # fleet_direction von 1 steht für rechts, -1 für links
         self.fleet_direction = 1
 
-        # Scoring
+        # Punktestand
         self.alien_points = 50
 
     def increase_speed(self):
-        """Increase speed settings and alien point values."""
+        """Geschwindigkeitseinstellungen und Alien-Punktewerte erhöhen."""
         self.ship_speed *= self.speedup_scale
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale

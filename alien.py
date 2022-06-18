@@ -3,9 +3,9 @@ import pygame
 from pygame.sprite import Sprite
 
 def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
+    """Absoluter Pfad zur Ressource, funktioniert für PyInstaller."""
     try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        # PyInstaller erstellt einen temporären Ordner und speichert den Pfad in _MEIPASS
         base_path = sys._MEIPASS
     except Exception:
         base_path = os.path.abspath("images")
@@ -14,33 +14,33 @@ def resource_path(relative_path):
 
 
 class Alien(Sprite):
-    """A class to represent a single alien in the fleet."""
+    """Eine Klasse, die ein einzelnes Alien in der Flotte darstellt."""
     
     def __init__(self, ai_game):
-        """Initialize the alien and set its starting position."""
+        """Alien initialisieren und seine Startposition festlegen."""
         super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings
 
-        # Load the alien image and set its rect attribute.
+        # Alien-Bild laden und sein Rect-Attribut setzen
         self.img_path = resource_path("alien.png")
         self.image = pygame.image.load(self.img_path)
         self.rect = self.image.get_rect()
 
-        # Start each new alien near the top of the screen.
+        # Neue Alien in der Nähe des oberen Bildschirmrandes beginnen
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
 
-        # Store the alien's exact horizontal position.
+        # Die genaue horizontale Position des Aliens speichern
         self.x = float(self.rect.x)
 
     def check_edges(self):
-        """Return True if alien is at edge of screen."""
+        """Gibt True zurück, wenn sich der Alien am Rand des Bildschirms befindet."""
         screen_rect = self.screen.get_rect()
         if self.rect.right >= screen_rect.right or self.rect.left <= 0:
             return True
 
     def update(self):
-        """Move the alien right or left."""
+        """Alien nach rechts oder links bewegen."""
         self.x += self.settings.alien_speed * self.settings.fleet_direction
         self.rect.x = self.x

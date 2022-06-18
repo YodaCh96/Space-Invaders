@@ -232,7 +232,7 @@ class AlienInvasion:
     def _update_screen(self):
         """Die Bilder auf dem Bildschirm aktualisieren, und zum neuen Bildschirm wechseln."""
         if self.ldr.light_detected:
-            self.screen.fill((230,230,230))
+            self.screen.fill((255,255,255))
             self.sb.text_color = (0,0,0)
         else:
             self.screen.fill((0,0,0))

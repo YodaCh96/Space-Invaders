@@ -14,11 +14,11 @@ class Scoreboard:
         self.settings = ai_game.settings
         self.stats = ai_game.stats
 
-        # Schrifteinstellungen für Score-Informationen
+        # Schrifteinstellungen fuer Score-Informationen
         self.text_color = (30, 30, 30)
         self.font = pygame.font.SysFont(None, 48)
 
-        # Die ersten Bilder für die Punktevergabe vorbereiten
+        # Die ersten Bilder fuer die Punktevergabe vorbereiten
         self.prep_score()
         self.prep_high_score()
         self.prep_level()
@@ -60,7 +60,7 @@ class Scoreboard:
         self.level_rect.top = self.score_rect.bottom + 10
     
     def prep_ships(self):
-        """Zeigt an, wie viele Schiffe noch übrig sind."""
+        """Zeigt an, wie viele Schiffe noch uebrig sind."""
         self.ships = Group()
         for ship_number in range(self.stats.ships_left):
             ship = Ship(self.ai_game)
@@ -69,7 +69,7 @@ class Scoreboard:
             self.ships.add(ship)
     
     def check_high_score(self):
-        """Prüfen, ob es einen neuen Highscore gibt."""
+        """Pruefen, ob es einen neuen Highscore gibt."""
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score
             self.prep_high_score()

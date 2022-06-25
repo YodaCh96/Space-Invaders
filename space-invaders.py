@@ -36,11 +36,11 @@ class AlienInvasion:
 
         self._create_fleet()
 
-        # Die Schaltfläche Play
+        # Die Schaltflaeche Play
         self.play_button = Button(self, "Play")
     
     def run_game(self):
-        """Die Hauptschleife für das Spiel wird hier gestartet."""
+        """Die Hauptschleife fuer das Spiel wird hier gestartet."""
         while True:
             self._check_events()
 
@@ -68,10 +68,10 @@ class AlienInvasion:
         """Startet ein neues Spiel, wenn der Spieler auf Play klickt."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
-            # Zurücksetzen der Spieleinstellungen
+            # Zuruecksetzen der Spieleinstellungen
             self.settings.initialize_dynamic_settings()
 
-            # Zurücksetzen der Statistiken des Spiels
+            # Zuruecksetzen der Statistiken des Spiels
             self.stats.reset_stats()
             self.stats.game_active = True
             self.sb.prep_score()
@@ -90,7 +90,7 @@ class AlienInvasion:
             pygame.mouse.set_visible(False)
 
     def _check_keydown_events(self, event):
-        """Reagieren auf Tastendrücke."""
+        """Reagieren auf Tastendruecke."""
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
@@ -129,7 +129,7 @@ class AlienInvasion:
             pygame.mouse.set_visible(True)
         
     def _fire_bullet(self):
-        """Erstellen ein neues Bullet und fügen es der Bullet-Gruppe hinzu."""
+        """Erstellen ein neues Bullet und fuegen es der Bullet-Gruppe hinzu."""
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
@@ -138,11 +138,11 @@ class AlienInvasion:
             self.buzzer.off()
     
     def _update_bullets(self):
-        """Aktualisieren die Position der Bullets und löschen die alten Bullets."""
+        """Aktualisieren die Position der Bullets und loeschen die alten Bullets."""
         # Position der Bullets aktualisieren
         self.bullets.update()
 
-        # Verschwundene Bullets löschen
+        # Verschwundene Bullets loeschen
         for bullet in self.bullets.copy():
                 if bullet.rect.bottom <= 0:
                     self.bullets.remove(bullet)
@@ -161,17 +161,17 @@ class AlienInvasion:
             self.sb.check_high_score()
         
         if not self.aliens:
-            # Bestehende Bullets zerstören und neue Flotte erstellen
+            # Bestehende Bullets zerstoeren und neue Flotte erstellen
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
 
-            # Level erhöhen
+            # Level erhoehen
             self.stats.level += 1
             self.sb.prep_level()
 
     def _update_aliens(self):
-        """Prüfen, ob die Flotte an einem Rand steht, und dann die Positionen aller Aliens in der Flotte aktualisieren."""
+        """Pruefen, ob die Flotte an einem Rand steht, und dann die Positionen aller Aliens in der Flotte aktualisieren."""
         self._check_fleet_edges()
         self.aliens.update()
 
@@ -210,7 +210,7 @@ class AlienInvasion:
                 break
     
     def _change_fleet_direction(self):
-        """Die gesamte Flotte fallen lassen und die Richtung der Flotte ändern."""
+        """Die gesamte Flotte fallen lassen und die Richtung der Flotte aendern."""
         for alien in self.aliens.sprites():
             alien.rect.y += self.settings.fleet_drop_speed
         self.settings.fleet_direction *= -1
@@ -225,7 +225,7 @@ class AlienInvasion:
         self.aliens.add(alien)
     
     def _check_aliens_bottom(self):
-        """Prüfen, ob Aliens den unteren Rand des Bildschirms erreicht haben."""
+        """Pruefen, ob Aliens den unteren Rand des Bildschirms erreicht haben."""
         screen_rect = self.screen.get_rect()
         for alien in self.aliens.sprites():
             if alien.rect.bottom >= screen_rect.bottom:

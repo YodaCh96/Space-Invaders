@@ -3,9 +3,9 @@ import pygame
 from pygame.sprite import Sprite
 
 def resource_path(relative_path):
-    """Absoluter Pfad zur Ressource, funktioniert für PyInstaller."""
+    """Absoluter Pfad zur Ressource, funktioniert fuer PyInstaller."""
     try:
-        # PyInstaller erstellt einen temporären Ordner und speichert den Pfad in _MEIPASS
+        # PyInstaller erstellt einen temporaeren Ordner und speichert den Pfad in _MEIPASS
         base_path = sys._MEIPASS
     except Exception:
         base_path = os.path.abspath("images")
@@ -27,7 +27,7 @@ class Alien(Sprite):
         self.image = pygame.image.load(self.img_path)
         self.rect = self.image.get_rect()
 
-        # Neue Alien in der Nähe des oberen Bildschirmrandes beginnen
+        # Neue Alien in der Naehe des oberen Bildschirmrandes beginnen
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
 
@@ -35,7 +35,7 @@ class Alien(Sprite):
         self.x = float(self.rect.x)
 
     def check_edges(self):
-        """Gibt True zurück, wenn sich der Alien am Rand des Bildschirms befindet."""
+        """Gibt True zurueck, wenn sich der Alien am Rand des Bildschirms befindet."""
         screen_rect = self.screen.get_rect()
         if self.rect.right >= screen_rect.right or self.rect.left <= 0:
             return True

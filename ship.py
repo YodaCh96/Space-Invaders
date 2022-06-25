@@ -3,9 +3,9 @@ import pygame
 from pygame.sprite import Sprite
 
 def resource_path(relative_path):
-    """Absoluter Pfad zur Ressource, funktioniert für PyInstaller."""
+    """Absoluter Pfad zur Ressource, funktioniert fuer PyInstaller."""
     try:
-        # PyInstaller erstellt einen temporären Ordner und speichert den Pfad in _MEIPASS
+        # PyInstaller erstellt einen temporaeren Ordner und speichert den Pfad in _MEIPASS
         base_path = sys._MEIPASS
     except Exception:
         base_path = os.path.abspath("images")
@@ -30,7 +30,7 @@ class Ship(Sprite):
         # Jedes neue Schiff in der unteren Mitte des Bildschirms beginnen
         self.rect.midbottom = self.screen_rect.midbottom
 
-        # Dezimalwert für die horizontale Position des Schiffs speichern
+        # Dezimalwert fuer die horizontale Position des Schiffs speichern
         self.x = float(self.rect.x)
 
         # Bewegungs-flags

@@ -1,5 +1,5 @@
 class Settings:
-    """Eine Klasse zum Speichern aller Einstellungen für Space Invaders."""
+    """Eine Klasse zum Speichern aller Einstellungen fuer Space Invaders."""
 
     def __init__(self):
         """Statischen Einstellungen des Spiels initialisieren."""
@@ -10,7 +10,7 @@ class Settings:
         # Schiffseinstellungen
         self.ship_limit = 3
 
-        # Einstellungen für Bullets
+        # Einstellungen fuer Bullets
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
@@ -33,14 +33,14 @@ class Settings:
         self.bullet_speed = 0.7 * self.offset
         self.alien_speed = 0.1 * self.offset
 
-        # fleet_direction von 1 steht für rechts, -1 für links
+        # fleet_direction von 1 steht fuer rechts, -1 fuer links
         self.fleet_direction = 1
 
         # Punktestand
         self.alien_points = 50
 
     def increase_speed(self):
-        """Geschwindigkeitseinstellungen und Alien-Punktewerte erhöhen."""
+        """Geschwindigkeitseinstellungen und Alien-Punktewerte erhoehen."""
         self.ship_speed *= self.speedup_scale
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale

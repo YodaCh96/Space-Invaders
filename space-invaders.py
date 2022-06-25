@@ -1,9 +1,7 @@
 import sys
 from time import sleep
-from gpiozero import LightSensor
-
+from gpiozero import LightSensor, Buzzer
 import pygame
-
 from settings import Settings
 from stats import GameStats
 from scoreboard import Scoreboard
@@ -25,6 +23,8 @@ class AlienInvasion:
         pygame.display.set_caption("Space Invaders")
         
         self.ldr = LightSensor(4)
+        
+        self.buzzer = Buzzer(21)
 
         # Eine Instanz zum Speichern von Spielstatistiken erstellen
         self.stats = GameStats(self)
@@ -133,6 +133,9 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+            self.buzzer.on()
+            sleep(0.03)
+            self.buzzer.off()
     
     def _update_bullets(self):
         """Aktualisieren die Position der Bullets und löschen die alten Bullets."""

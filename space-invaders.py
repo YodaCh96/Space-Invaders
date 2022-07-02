@@ -10,7 +10,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 
-class AlienInvasion:
+class SpaceInvaders:
     """Allgemeine Klasse zur Verwaltung von Spielelementen und Verhalten."""
     def __init__(self):
         """Das Spiel initialisieren und die Spiel-Ressourcen erstellen."""
@@ -290,6 +290,6 @@ class AlienInvasion:
         pygame.display.flip()
 
 if __name__ == '__main__':
-    game = AlienInvasion()
+    game = SpaceInvaders()
     # Spiel starten
     game.run_game()

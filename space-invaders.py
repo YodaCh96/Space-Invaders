@@ -1,4 +1,4 @@
-import sys
+import sys, spidev, os, time
 from time import sleep
 from gpiozero import LightSensor, Buzzer
 import pygame
@@ -12,7 +12,6 @@ from alien import Alien
 
 class AlienInvasion:
     """Allgemeine Klasse zur Verwaltung von Spielelementen und Verhalten."""
-
     def __init__(self):
         """Das Spiel initialisieren und die Spiel-Ressourcen erstellen."""
         pygame.init()
@@ -25,11 +24,22 @@ class AlienInvasion:
         self.ldr = LightSensor(4)
         
         self.buzzer = Buzzer(21)
+        
+        # Definition von Channels
+        self.swt_channel = 0
+        self.vrx_channel = 1
+        self.vry_channel = 2
+        
+        # Zeitverzoegerung, alle wie viel Sekunden ausgelesen wird
+        self.delay = 0.5
+         
+        # SPI oeffnen
+        self.spi = spidev.SpiDev()
+        self.spi.open(0,0)
+        self.spi.max_speed_hz=1000000
 
-        # Eine Instanz zum Speichern von Spielstatistiken erstellen
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
-
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
@@ -53,19 +63,43 @@ class AlienInvasion:
     
     def _check_events(self):
         """Reagieren auf Tastendrucke und Mausereignisse."""
+        
+        self.swt_val = self.spi.xfer2([1,(8 + self.swt_channel) << 4, 0])
+        self.swt_val = ((self.swt_val[1] & 3) << 8) + self.swt_val[2]
+        self.vry_val = self.spi.xfer2([1,(8 + self.vry_channel) << 4, 0])
+        self.vry_val = ((self.vry_val[1] & 3) << 8) + self.vry_val[2]
+        
+        # Taste vom Joystick wird gedrueckt
+        print(self.swt_val)
+        if self.swt_val == 0:
+            self._fire_bullet()
+        
+        # Bewegung nach rechts
+        if self.vry_val <= 1:
+            self.ship.moving_right = True
+        else:
+            self.ship.moving_right = False
+        
+        # Bewegung nach links
+        if self.vry_val >= 1015:
+            self.ship.moving_left = True
+        else:
+            self.ship.moving_left = False
+        
+        # Auf Tastendrucke und Mausereignisse reagieren
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
                     self._check_play_button(mouse_pos)
-                elif event.type == pygame.KEYDOWN:
-                    self._check_keydown_events(event)
-                elif event.type == pygame.KEYUP:
-                    self._check_keyup_events(event)
+                #elif event.type == pygame.KEYDOWN:
+                    #self._check_keydown_events(event)
+                #elif event.type == pygame.KEYUP:
+                    #self._check_keyup_events(event)
 
     def _check_play_button(self, mouse_pos):
-        """Startet ein neues Spiel, wenn der Spieler auf Play klickt."""
+        """Ein neues Spiel starten, wenn der Spieler auf Play klickt."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
             # Zuruecksetzen der Spieleinstellungen
@@ -109,8 +143,9 @@ class AlienInvasion:
     
     def _ship_hit(self):
         """Reagieren darauf, dass das Schiff von einem Alien angegriffen wird."""
-        # Dekrementieren von ships_left und der Scoreboard aktualisieren
+        # Dekrementieren von ships_left
         self.stats.ships_left -= 1
+        # Scoreboard aktualisieren
         self.sb.prep_ships()
 
         if self.stats.ships_left > 0:
@@ -122,8 +157,7 @@ class AlienInvasion:
             self._create_fleet()
             self.ship.center_ship()
 
-            # Pause
-            sleep(0.5)
+            sleep(self.delay)
         else:
             self.stats.game_active = False
             pygame.mouse.set_visible(True)
@@ -231,7 +265,7 @@ class AlienInvasion:
             if alien.rect.bottom >= screen_rect.bottom:
                 self._ship_hit()
                 break
-    
+
     def _update_screen(self):
         """Die Bilder auf dem Bildschirm aktualisieren, und zum neuen Bildschirm wechseln."""
         if self.ldr.light_detected:
@@ -256,7 +290,6 @@ class AlienInvasion:
         pygame.display.flip()
 
 if __name__ == '__main__':
-    # Spiel-Instanz erstellen
-    ai = AlienInvasion()
-    # Das Spiel starten
-    ai.run_game()
+    game = AlienInvasion()
+    # Spiel starten
+    game.run_game()
